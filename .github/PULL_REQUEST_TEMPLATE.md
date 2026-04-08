@@ -1,17 +1,17 @@
 ## Pull Request
 
-### What
-<!-- Brief description -->
+### 變更內容
+<!-- 簡述此次變更 -->
 
-### Why
-<!-- Motivation / issue link -->
+### 原因
+<!-- 動機 / 對應的 Issue -->
 
-### How
-<!-- Implementation approach -->
+### 實作方式
+<!-- 實作的方法與邏輯 -->
 
-### Checklist
-- [ ] Code compiles (`npm run build`)
-- [ ] Linting passes (`npm run lint`)
-- [ ] Tests pass (`npm test`)
-- [ ] New endpoints have tests
-- [ ] No `any` types in business logic
+### 確認清單
+- [ ] 程式碼可編譯（`npm run build`）
+- [ ] Lint 檢查通過（`npm run lint`）
+- [ ] 測試通過（`npm test`）
+- [ ] 新 endpoint 已撰寫測試
+- [ ] 商業邏輯中無使用 `any` 型別

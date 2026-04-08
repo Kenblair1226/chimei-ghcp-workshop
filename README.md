@@ -1,48 +1,48 @@
-# 🏭 Chi Mei GHCP Workshop — Product Inventory API
+# 🏭 奇美實業 GitHub Copilot Workshop — 產品庫存管理 API
 
-> 奇美實業 GitHub Copilot Workshop Demo Project
+> 奇美實業 GitHub Copilot Workshop 展示專案
 
-A simple Product Inventory API built with TypeScript + Express, designed for demonstrating GitHub Copilot features.
+使用 TypeScript + Express 建構的簡易產品庫存管理 API，專為展示 GitHub Copilot 功能而設計。
 
-## Quick Start
+## 快速開始
 
 ```bash
 npm install
-npm run dev       # Start dev server
-npm run verify    # Build + Lint + Test
+npm run dev       # 啟動開發伺服器
+npm run verify    # 建置 + Lint 檢查 + 測試
 ```
 
-## API Endpoints
+## API 端點
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/health` | Health check |
-| GET | `/api/products` | List all products |
-| GET | `/api/products/:id` | Get product by ID |
-| POST | `/api/products` | Create product |
-| PUT | `/api/products/:id` | Update product |
-| DELETE | `/api/products/:id` | Delete product |
+| 方法 | 路徑 | 說明 |
+|------|------|------|
+| GET | `/health` | 健康檢查 |
+| GET | `/api/products` | 取得所有產品 |
+| GET | `/api/products/:id` | 依 ID 取得產品 |
+| POST | `/api/products` | 新增產品 |
+| PUT | `/api/products/:id` | 更新產品 |
+| DELETE | `/api/products/:id` | 刪除產品 |
 
-## Workshop Branch Map
+## Workshop 分支說明
 
-| Branch | Purpose |
-|--------|---------|
-| `main` | ✅ Stable baseline (all tests pass) |
-| `demo/sre-broken` | 💥 Broken CI — for SRE Agent demo |
-| `demo/review-bad-pr` | 👀 Code with issues — for Code Review demo |
+| 分支 | 用途 |
+|------|------|
+| `main` | ✅ 穩定基線（所有測試通過） |
+| `demo/sre-broken` | 💥 CI 故障版 — SRE Agent 展示用 |
+| `demo/review-bad-pr` | 👀 有問題的程式碼 — Code Review 展示用 |
 
-## Workshop Agenda
+## Workshop 議程
 
-### Part 1 — Agentic Workflow（80 min）
-GitHub Copilot Coding Agent: Issue → Auto code → PR
+### Part 1 — Agentic Workflow 實戰（80 min）
+GitHub Copilot Coding Agent：Issue → 自動撰寫程式碼 → 提交 PR
 
-### Part 2 — SRE Agent（70 min）
-CI fails → Agent reads logs → Auto fix → PR
+### Part 2 — 自治式 SRE Agent（70 min）
+CI 失敗 → Agent 分析日誌 → 自動修復 → 提交 PR
 
-### Part 3 — Code Review（40 min）
-Copilot auto-reviews PRs with custom guidelines
+### Part 3 — 自動化 Code Review（40 min）
+Copilot 依據團隊規範自動審查 PR
 
-## Demo Reset
+## 重置 Demo
 
 ```bash
 git checkout main

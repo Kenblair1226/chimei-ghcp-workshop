@@ -1,33 +1,33 @@
-# Copilot Coding Guidelines — Chi Mei Workshop
+# Copilot 程式碼規範 — 奇美實業 Workshop
 
-## Language & Framework
+## 語言與框架
 - TypeScript + Express.js
-- Strict mode enabled
+- 啟用嚴格模式（strict mode）
 
-## Code Style
-- Use `const` over `let` wherever possible; never use `var`
-- Prefix unused parameters with `_` (e.g., `_req`)
-- All route handlers must have explicit return types or return `void`
-- Use async/await instead of raw Promises
+## 程式碼風格
+- 盡量使用 `const`，避免使用 `let`；禁止使用 `var`
+- 未使用的參數以 `_` 開頭命名（例如 `_req`）
+- 所有 route handler 必須明確標示回傳型別或回傳 `void`
+- 使用 async/await，不要直接使用 raw Promise
 
-## API Design
-- All responses must follow the standard envelope format:
-  - Success: `{ "data": ... }` or `{ "data": [...], "total": number }`
-  - Error: `{ "error": "message", "details": [...] }`
-- Use proper HTTP status codes (200, 201, 204, 400, 404, 500)
-- Validate ALL external input before processing
+## API 設計規範
+- 所有回應必須遵循標準封裝格式：
+  - 成功：`{ "data": ... }` 或 `{ "data": [...], "total": number }`
+  - 錯誤：`{ "error": "錯誤訊息", "details": [...] }`
+- 使用正確的 HTTP 狀態碼（200、201、204、400、404、500）
+- 處理前必須驗證所有外部輸入
 
-## Type Safety
-- Do NOT use `any` in route handlers or business logic
-- Define explicit interfaces for all request/response payloads
-- Use type guards for runtime type checking
+## 型別安全
+- 禁止在 route handler 或商業邏輯中使用 `any`
+- 為所有 request/response 定義明確的 interface
+- 使用 type guard 進行執行期型別檢查
 
-## Testing
-- Every new endpoint MUST have corresponding tests
-- Tests should cover: happy path, validation errors, not-found cases
-- Use `beforeEach` to reset state between tests
+## 測試規範
+- 每個新增的 endpoint 都必須有對應的測試
+- 測試應涵蓋：正常流程、驗證錯誤、資料不存在的情況
+- 使用 `beforeEach` 在每個測試之間重置狀態
 
-## Error Handling
-- Never expose internal error details to the client
-- Log errors to console with context (route, input)
-- Return consistent error response shape
+## 錯誤處理
+- 禁止將內部錯誤細節暴露給客戶端
+- 錯誤日誌需包含上下文資訊（route 路徑、輸入參數）
+- 回傳一致的錯誤回應格式
