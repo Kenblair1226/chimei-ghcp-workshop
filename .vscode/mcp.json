@@ -9,5 +9,32 @@
         "./demo-db/chimei-products.db"
       ]
     }
+    // SQL Server 範例：
+    // 把上面的 sqlite 區塊替換成這段，並依實際環境調整 connection string。
+    //
+    // "sqlserver": {
+    //   "command": "npx",
+    //   "args": [
+    //     "-y",
+    //     "@modelcontextprotocol/server-mssql"
+    //   ],
+    //   "env": {
+    //     "MSSQL_CONNECTION_STRING": "Server=localhost,1433;Database=chimei;User Id=sa;Password=YourStrongPassword;TrustServerCertificate=True;"
+    //   }
+    // }
+
+    // MySQL 範例：
+    // 把 sqlite 區塊替換成這段，並依實際環境調整連線字串。
+    //
+    // "mysql": {
+    //   "command": "npx",
+    //   "args": [
+    //     "-y",
+    //     "@modelcontextprotocol/server-mysql"
+    //   ],
+    //   "env": {
+    //     "MYSQL_CONNECTION_STRING": "mysql://root:your-password@localhost:3306/chimei"
+    //   }
+    // }
   }
 }
