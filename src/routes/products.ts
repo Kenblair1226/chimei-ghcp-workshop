@@ -10,6 +10,13 @@ router.get("/", (_req: Request, res: Response) => {
   res.json({ data: products, total: products.length });
 });
 
+// Search products by name
+router.get("/search", (req: Request, res: Response): void => {
+  const name = typeof req.query.name === "string" ? req.query.name : "";
+  const products = name ? productStore.findByName(name) : productStore.findAll();
+  res.json({ data: products, total: products.length });
+});
+
 // Get product by ID
 router.get("/:id", (req: Request, res: Response) => {
   const product = productStore.findById(req.params.id as string);

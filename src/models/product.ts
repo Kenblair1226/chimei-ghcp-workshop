@@ -57,6 +57,13 @@ class ProductStore {
     return this.products.get(id);
   }
 
+  findByName(name: string): Product[] {
+    const keyword = name.toLowerCase();
+    return Array.from(this.products.values()).filter((p) =>
+      p.name.toLowerCase().includes(keyword)
+    );
+  }
+
   create(input: CreateProductInput): Product {
     this.counter++;
     const id = `PROD-${String(this.counter).padStart(4, "0")}`;

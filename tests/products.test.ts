@@ -85,3 +85,42 @@ describe("DELETE /api/products/:id", () => {
     expect(res.status).toBe(404);
   });
 });
+
+describe("GET /api/products/search", () => {
+  it("should return matching products when name has results", async () => {
+    const res = await request(app).get("/api/products/search?name=ABS");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(2);
+    expect(res.body.total).toBe(2);
+    res.body.data.forEach((p: { name: string }) => {
+      expect(p.name.toLowerCase()).toContain("abs");
+    });
+  });
+
+  it("should be case-insensitive", async () => {
+    const res = await request(app).get("/api/products/search?name=abs");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(2);
+  });
+
+  it("should return empty array when no products match", async () => {
+    const res = await request(app).get("/api/products/search?name=NOMATCH");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(0);
+    expect(res.body.total).toBe(0);
+  });
+
+  it("should return all products when name is not provided", async () => {
+    const res = await request(app).get("/api/products/search");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(5);
+    expect(res.body.total).toBe(5);
+  });
+
+  it("should return all products when name is empty string", async () => {
+    const res = await request(app).get("/api/products/search?name=");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(5);
+    expect(res.body.total).toBe(5);
+  });
+});
