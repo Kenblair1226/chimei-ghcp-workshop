@@ -7,11 +7,59 @@ beforeEach(() => {
 });
 
 describe("GET /api/products", () => {
-  it("should return all seeded products", async () => {
+  it("should return all seeded products with default pagination", async () => {
     const res = await request(app).get("/api/products");
     expect(res.status).toBe(200);
     expect(res.body.data).toHaveLength(5);
     expect(res.body.total).toBe(5);
+    expect(res.body.page).toBe(1);
+    expect(res.body.pageSize).toBe(10);
+    expect(res.body.totalPages).toBe(1);
+  });
+
+  it("should return paginated results with custom page and pageSize", async () => {
+    const res = await request(app).get("/api/products?page=1&pageSize=2");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(2);
+    expect(res.body.total).toBe(5);
+    expect(res.body.page).toBe(1);
+    expect(res.body.pageSize).toBe(2);
+    expect(res.body.totalPages).toBe(3);
+  });
+
+  it("should return second page correctly", async () => {
+    const res = await request(app).get("/api/products?page=2&pageSize=2");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(2);
+    expect(res.body.page).toBe(2);
+  });
+
+  it("should return empty data when page exceeds totalPages", async () => {
+    const res = await request(app).get("/api/products?page=99&pageSize=10");
+    expect(res.status).toBe(200);
+    expect(res.body.data).toHaveLength(0);
+    expect(res.body.total).toBe(5);
+    expect(res.body.page).toBe(99);
+    expect(res.body.pageSize).toBe(10);
+    expect(res.body.totalPages).toBe(1);
+  });
+
+  it("should return 400 for invalid page value", async () => {
+    const res = await request(app).get("/api/products?page=0&pageSize=10");
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBeDefined();
+  });
+
+  it("should return 400 for non-numeric page value", async () => {
+    const res = await request(app).get("/api/products?page=abc&pageSize=10");
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBeDefined();
+  });
+
+  it("should return 400 for invalid pageSize value", async () => {
+    const res = await request(app).get("/api/products?page=1&pageSize=-1");
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBeDefined();
   });
 });
 
