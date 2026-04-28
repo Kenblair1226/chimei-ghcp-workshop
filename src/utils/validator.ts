@@ -21,8 +21,8 @@ export function validateCreateProduct(
     errors.push({ field: "category", message: "Category is required and must be a non-empty string" });
   }
 
-  if (typeof input.price !== "number" || input.price < 0) {
-    errors.push({ field: "price", message: "Price must be a non-negative number" });
+  if (typeof input.price !== "number" || input.price <= 0) {
+    errors.push({ field: "price", message: "Price must be a positive number" });
   }
 
   if (typeof input.stock !== "number" || !Number.isInteger(input.stock) || input.stock < 0) {
