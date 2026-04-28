@@ -7,7 +7,7 @@ const router = Router();
 // List all products
 router.get("/", (_req: Request, res: Response) => {
   const products = productStore.findAll();
-  res.json({ data: products, count: products.length });
+  res.json({ data: products, total: products.length });
 });
 
 // Get product by ID
