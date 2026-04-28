@@ -1,11 +1,10 @@
 {
-  "mcpServers": {
+  "servers": {
     "sqlite": {
       "command": "npx",
       "args": [
         "-y",
-        "@anthropic-ai/mcp-server-sqlite",
-        "--db-path",
+        "mcp-server-sqlite-npx",
         "./demo-db/chimei-products.db"
       ]
     }
